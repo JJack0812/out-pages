@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<meta lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>平安成电智慧通行</title>
+</head>
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<body style="width:98%;">
+  <!--index.wxml-->
+  <!-- <input type="text" value="1017594942@qq.com" />
+  <button onclick="disableElement()">禁用</button>
+  <button onclick="radiochange()">test</button> -->
+
+
+  <div class="outer">
+    <div class="container">
+      <div>
+        <div class="info">
+          <h1>
+            本页面仅为学习娱乐之用，<span style="color: red">严禁</span>作为进出校门的凭证！
+          </h1>
+          <h1>
+            出问题后果自负！作者不承担任何责任！
+          </h1>
+          <h2>
+            如果授权字样换行，把微信字体调小。
+          </h2>
+          <div class="custom-name">
+            <label style="font-size: 20px">我是谁：</label>
+            <input type="text" oninput="namechange()" id="custom-name-input" class="custom-name-input">
+          </div>
+          <br>
+          <div >
+            <label>出门选中→</label>
+            <input type="radio" class="inout"  id="inout">
+          </div>
+
+          <!-- <div class="io">
+            <td>
+              <input name="io" value="1" type="radio" οnclick="radiochange()">
+              <label>我从哪里来</label><br>
+              <input name="io" value="0" type="radio" οnclick="radiochange()">
+              <label for="sex">我要到哪里去</label><br>
+            </td>
+          </div> -->
+          <br>
+          <button id="infoselected" style="height: 30px; width: 60px;">确认</button>
+        </div>
+      </div>
+
+      <block>
+        <div class="usermotto">
+          <!-- <text class="user-motto">{{motto}}</text> -->
+          <text class="auth" id="auth">想出去耍吗嘻嘻嘻~</text>
+        </div>
+        <!-- <div class="divLine"></div> -->
+        <hr size="0.5" color="#E0E3DA" align="center">
+
+        <div class="table">
+          <block>
+            <div class="tr">
+              <div class="td-left">
+                <div class="icon">
+                  <img src="./img/user.png" mode="aspectFill">
+                </div>
+              </div>
+              <div class="td-mid">
+                <div class="user-left">用户姓名</div>
+              </div>
+              <div class="td-right">
+                <div id="user-right" class="user-right">UESTCer</div>
+              </div>
+            </div>
+            <div class="tr">
+              <div class="td-left">
+                <div class="icon">
+                  <img src="./img/register.png" mode="aspectFill">
+                </div>
+              </div>
+              <div class="td-mid">
+                <div class="register-left">登记类型</div>
+              </div>
+              <div class="td-right">
+                <div class="register-right">研究生（硕士）</div>
+              </div>
+            </div>
+            <div class="tr">
+              <div class="td-left">
+                <div class="icon">
+                  <img src="./img/time.png" mode="aspectFill">
+                </div>
+              </div>
+              <div class="td-mid">
+                <div class="time-left">登记时间</div>
+              </div>
+              <!-- <div class="td-right"><div class="time-right">{{text}}</div></div> -->
+              <div class="td-right">
+                <!-- <div class="scrolltxt">
+                  <div class="marquee_box">
+                    <div class="marquee_text" style="transform: translateX(-{{marqueeDistance}}px)">
+                      <text>{{text}}</text>
+                      <text style="margin-right:{{marquee_margin}}px;"></text>
+                      <text style="margin-right:{{marquee_margin}}px;">{{text}}</text>
+                    </div>
+                  </div>
+                </div> -->
+                <!-- <marquee>
+                  <div id="time" style="font-weight: bolder;font-size: 20px;color: #09B094;" behavior="scroll">
+                    蒙多想去哪儿就去哪儿！</div>
+                </marquee> -->
+				        <div id="time" class="time-right" style="white-space:nowrap;overflow:hidden;width:95%;">蒙
+多想去哪儿就去哪儿蒙多想去哪儿就去哪儿         蒙多想去哪儿就去哪儿蒙多想去哪儿就去哪儿                  
+蒙多想去哪儿就去哪儿蒙多想去哪儿就去哪儿         蒙多想去哪儿就去哪儿蒙多想去哪儿就去哪儿                       
+    </div>
+              </div>
+            </div>
+          </block>
+        </div>
+        <div class="qr-code-container" align="center" >
+            <div class="qr-code" id="goToQR">前往个人二维码</div>
+        </div>
+         <br style="height: 10px;"> </br>
+        <div class="uestc-icon-container" align="center">
+          <img class="uestc-icon" src="./img/uestc.jpg">
+        </div>
+      </block>
+    </div>
+  </div>
+  <div class="qr"  align="center" hidden="hidden" style="position: relative">
+    <img  src="img/qrcode.png" style="margin: 8px auto 0 auto;width:360px;height: 330px;z-index: -1;
+                                      ">
+    <div id="countingTime" class="countingTime">二维码剩余有效时间300秒</div>
+    <div id="rule" class="countingTime">   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+    <div id="rule1" class="countingTime" onclick="window.location.href=&#39;personPassRule.html&#39;">   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+  </div>
+<script language="javascript" type="text/javascript">
+
+function Moveleft(obj) {
+var tmp = (obj.scrollLeft)++;
+//当滚动条到达右边顶端时
+if (obj.scrollLeft==tmp) {
+	obj.innerHTML += ( obj.innerHTML+"         ");
+}
+//当滚动条滚动了初始内容的宽度时滚动条回到最左端
+if (obj.scrollLeft>=obj.firstChild.offsetWidth) obj.scrollLeft=0;
+}
+roll_timer = setInterval("Moveleft(document.getElementById('time'))",20);
+
+</script>
+
+<script src="js/jquery.js"></script>
+<!-- <script type="text/javascript" src="utils/util.js"></script> -->
+<script type="text/javascript" src="js/index.js"></script>
+
+<style>
+  /**index.wxss**/
+  .custom-name {
+    display: flex;
+  }
+  .countingTime{
+    position:relative;
+    font-size: 14px;
+    top: -95px;
+    align-content: center;
+  }
+  .rule11{
+    position:relative;
+    z-index: 5;
+    width: 100px;
+    height: 100px;
+    top: -100px;
+    align-content: center;
+    border: black;
+  }
+  .custom-name-input {
+    /*background-color: teal;*/
+    height: 30px;
+  }
+
+  .userinfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .userinfo-avatar {
+    width: 128rpx;
+    height: 128rpx;
+    margin: 20rpx;
+    border-radius: 50%;
+  }
+
+  .userinfo-nickname {
+    color: #aaa;
+  }
+
+  .usermotto {
+    /* flex: center; */
+    margin-top: 50px;
+    margin-bottom: 40px;
+    font-size: 22px;
+
+  }
+
+  .auth {
+    color: #008900;
+    font-weight: bold;
+    font-size: 25px;
+    text-align: center;
+  }
+
+  .divLine {
+    background: #E0E3DA;
+    width: 100%;
+    height: 3rpx;
+  }
+
+  .icon {
+    /* display:flex;  */
+    /* display: contents;                   */
+    justify-content: center;
+    /* flex-grow: 1; */
+
+    /* margin-left: 5px; */
+  }
+
+  .icon image {
+    width: 20px;
+    height: 20px;
+  }
+
+  .user {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+
+  }
+
+  .user-left {
+    font-family: "黑体";
+    color: #000;
+    font-size: 40rpx;
+    flex-grow: 2;
+
+
+  }
+
+  .user-right {
+    font-family: "黑体";
+    color: #000;
+    font-size: 25px;
+    align-items: right;
+    font-weight: 900;
+    flex-grow: 3;
+    margin-right: 10px;
+  }
+
+  .register {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+
+  }
+
+  .register-left {
+    font-family: "黑体";
+    color: #000;
+    font-size: 40rpx;
+  }
+
+  .register-right {
+    font-family: "黑体";
+    /* color: orange; */
+    color: #000;
+    font-size: 25px;
+    align-items: right;
+    font-weight: 900;
+  }
+
+  .time {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .time-left {
+    font-family: "黑体";
+    color: #000;
+    font-size: 40rpx;
+
+  }
+
+  .time-right {
+    font-family: "黑体";
+    color: #09B094;
+    /* font-size: 60rpx; */
+    align-items: right;
+    font-weight: 900;
+  }
+
+  /* 09B094 */
+
+
+
+
+  /*table*/
+  .table {
+    width: 100%;
+    border: 0px solid darkgray;
+  }
+
+  .tr {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    height: 3rem;
+    align-items: center;
+  }
+
+  .td-left {
+    width: 5%;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .td-mid {
+    width: 35%;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .td-right {
+    width: 60%;
+    justify-content: center;
+    text-align: right;
+  }
+  .qr-code-container {
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+
+  .qr-code {
+    height: 35px;
+    line-height:35px;
+    width: 40%;
+    /* height: 30px; */
+    border-radius: 3%;
+    
+    border-color: #09B094;
+    background-color: #09B094;
+    
+    text-align: center;
+    color: white; 
+  }
+  .uestc-icon-container {
+    margin-top: -30px;
+    margin-bottom: 10px;
+  }
+  .uestc-icon {
+    height:15%;
+    width:15%;
+  }
+
+
+  .scrolltxt {
+    padding: 0 20rpx;
+    background: transparent;
+  }
+
+  .marquee_box {
+    position: relative;
+    font-size: 80rpx;
+    color: #09B094;
+    font-weight: bold;
+    height: 90rpx;
+    display: block;
+    overflow: hidden;
+  }
+
+  .marquee_text {
+    white-space: nowrap;
+    position: absolute;
+    top: 0;
+    font-size: 20px;
+    height: 90rpx;
+    line-height: 90rpx;
+  }
+</style>
+
+</body></html>
