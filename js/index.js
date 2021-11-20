@@ -47,7 +47,20 @@ function namechange() {
 document.getElementById("user-right").innerHTML = document.getElementById("custom-name-input").value
 }
 
+function getQueryString(name) {
+    let reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+    let r = window.location.search.substr(1).match(reg);
+    if (r != null) {
+        return unescape(decodeURI(r[2]));
+    };
+    return null;
+ }
 
+function getName(){
+    let myname = getQueryString('name')
+    document.getElementById("user-right").innerHTML = myname
+}
+getName()
 $("#infoselected").click(function(){
     console.log('okokokko')
     $("div.info").hide();
@@ -63,6 +76,7 @@ $("#infoselected").click(function(){
     }
 
 });
+
 var maxtime = 300;
 function CountDown() {
     if (maxtime >= 0) {
@@ -83,6 +97,27 @@ $("#goToQR").click(function () {
     // sleep(50000)
 
 });
+
+$("#find").click(function () {
+
+    $("#find").hide();
+    $("#gif").show();
+    document.title = " "
+    setTimeout(function () {
+        $("#gif").hide();
+        document.title = "平安成电智慧通行"
+    },1800)
+
+    data.time = formatTime(new Date())
+    console.log(data.time)
+    // document.getElementById("time").innerHTML = data.time;
+    document.getElementById("time").innerHTML = data.time;
+
+
+});
+$("#gif").hide();
+
+
 $("#rule1").click(function () {
     // window.location.replace("./personPassRule.html");
     // $(window).attr('location','./personPassRule.html')
